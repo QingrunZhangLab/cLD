@@ -1,7 +1,11 @@
 # cLD Project
 Linkage disequilibrium (LD) is a fundamental concept in genetics; critical for studying genetic associations and molecular evolution. However, LD measurements are only reliable for common genetic variants, leaving low-frequency variants unanalyzed. In this work, we introduce cumulative LD (cLD), a stable statistic that captures the rare-variant LD between genetic regions and opens the door for furthering biological knowledge using rare genetic variants. In application, we find cLD reveals an increased genetic association between genes in 3D chromatin interactions, a phenomenon recently reported negatively by calculating standard LD between common variants. Additionally, we show that cLD is higher between gene pairs reported in interaction databases, identifies unreported protein-protein interactions, and reveals interacting genes distinguishing case/control samples in association studies.  
 
-The R & Python code for the cLD project and instructions on how to run it are included in this repository. Using our toy example you can verify the cLD value and the gene distance value easily, since we only have 5 genes and 6 individuals in it. If you want to go through the whole process, you may use demo example to run these codes.
+The R & Python code for the cLD project and instructions on how to run it are included in this repository. Using our toy example you can verify the cLD value and the gene distance value easily since we only have 5 genes and 6 individuals in it. If you want to go through the whole process, you may use the demo example to run these codes.  
+
+**Python codes are under version python/anaconda-3.6-5.1.0**  
+**R codes are under version R/3.6.2**  
+
 
 ## Data
 In this analysis, you need to provide:  
@@ -9,9 +13,9 @@ In this analysis, you need to provide:
   \-  the gene information file  
   \-  the gene-gene interaction file  
 In the paper, we are using the 1000 Genome dataset as the genotype file. The gene information file should contain the start point, end point and gene's Ensembl ID. The gene-gene interaction file should contain the gene-gene interaction in terms of genes' Ensembl ID. The example data is given.
-If you want to run a the anaylsis on the Hi-C interactions, you'll need to use Hi-C_InteractionTransfer.py to transfer the interaction intervals into gene-gene interactions. 
+If you want to run a anaylsis on the Hi-C interactions, you'll need to use Hi-C_InteractionTransfer.py to transfer the interaction intervals into gene-gene interactions. 
 
-## Procedure (Chapter 2 & 3)
+## Asymptotic Properties of cLD & Applying cLD to real sequence data
 
 ### Integrate SNVs
 **'geneIntegrate.py'** could integrate the SNVs into the gene lines, you can find the detail in the Supplementary material Chapter 1.
@@ -32,7 +36,7 @@ The output is:
 ### Calculate cLD
 **'cld.py'** could calculate the cLD matrix given the filtered gene file.
 The input is:   
-  \-  the filtered gene data from filter  
+  \-  the filtered gene data from the filter  
 The output is:   
   \-  the cLD file without Ensemble ID  
     
@@ -44,7 +48,7 @@ The output is:
   \-  output is the cLD file with Gene Esmbel ID  
 
 ### Gene distance
-**'genemid.py'** and **'genedistance.py'** are used to calculate the gene distcance between gene pairs.
+**'genemid.py'** and **'genedistance.py'** are used to calculate the gene distances between gene pairs.
 In **'genemid.py'**, the input is:  
   \-  cLD file with Ensembl ID  
 The output is:  
@@ -69,8 +73,8 @@ The output is:
 ### Variance Comparison
 **'cldVar.py'** calculate the variance of cLD based on the filtered gene file.
 The input is:    
-  \-  filtered gene file from filter  
-**'ldVar.py'** estimate the variance of LD based of the original SNV file. 
+  \-  filtered gene file from the filter  
+**'ldVar.py'** estimate the variance of LD based on the original SNV file. 
 The inputs are: 
   \-  SNP file  
   \-  specify the chromosome  
@@ -87,15 +91,15 @@ The inputs are:
 The output is:  
   \-  output is a matrix. negtive value means with interaction, positive means no-interaction   
 
-**'interactionDistseparate.py'** and **'tests.py'** could run the MH test and Fisher's exact test.  
+**'interactionDistseparate.py'** and **'tests.py'** could run the MH test and the Fisher's exact test.  
 The inputs are:    
   \-  cLD with gene esembl ID    
   \-  interaction-distance information matrix   
   \-  threshold of success (in quantile)  
  
-The outputs are the cld without interaction, this file contains 13 lines, each one represent a distance group. Base on these outputs, 'tests.py' could provide the test statistics and p-values for the test.  
+The outputs are the cld without interaction, this file contains 13 lines, each one represent a distance group. Based on these outputs, 'tests.py' could provide the test statistics and p-values for the test.  
 
-### Bootstrap Methods (Chapter 3)
+### Bootstrap Methods (Applying cLD to real sequence data)
 **'geneRandom.py'** is used to sample a subset of genes from the filtered gene file.   
 The inputs are:  
   \-  Filtered genefile  
@@ -116,7 +120,7 @@ The inputs are:
   \-  gene information list, you can find the example in the demo  
   \-  samplesize  
   \-  epoch  
-The output is the cLD Bootstap result, each row represents a iteration.
+The output is the cLD Bootstrap result, each row represents an iteration.
 
 **'bootstrapGroups.py'** and **'bootstrapResultSeparate.py'** are used to separate gene pairs into several cMAF groups. You may read the detail in the Supplementary material.
 
@@ -144,8 +148,13 @@ C0   |   1;0;10 | 1;19;25
 C1   |   1;25;40 | 1;90;110
 C2   |   1;2;13 | 1;20;24
 ... | ... | ... 
-## Protein Docking 
-The softwares are  
+
+#### Run Time 
+The run time of the demo example should be less than 20 mins.   
+In practice, the run time depends on the size of the data. For example, when we run the **geneIntegrate.py** on Chr 1, it may take 5 to 10 days to integrate the SNPs to genes. 
+
+## Protein Docking
+The software are  
 1.	Protein docking software:  HDOCKlite-v1.1: http://huanglab.phys.hust.edu.cn/software/hdocklite/   
 2.	Visualization software:   
 Pymol 2.5.1: https://pymol.org/2/   
@@ -155,4 +164,5 @@ LigPlot+’s: https://www.ebi.ac.uk/thornton-srv/software/LigPlus/manual/manual.
 We use the software plink: plink="/path_to_plink/plink". The code is 'Data source and quality control.sh'
 
 ### Go and KEGG pathway analysis
-Using ‘clusterProfiler’ R package, the code is 'Go and KEGG pathway analysis.R'
+Using ‘clusterProfiler’ R package, the code is 'Go and KEGG pathway **'analysis.R'**
+
