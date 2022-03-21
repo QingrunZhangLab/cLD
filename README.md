@@ -19,11 +19,10 @@ The inputs are:
   \-  gene information file  
   \-  original genotype data, contains the SNV information  
   \-  specify the chromosome  
-  \-  Threshold of rare SNPs  
+  \-  Threshold of rare SNVs  
 The output is:  
 \-  the intergrated gene file  
 
-### Filter genes
 'geneFilter.py' could remove the genes with cMAF = 0.
 The input is:  
   \-  the integrated gene file  
@@ -57,9 +56,10 @@ In genedistance.py, the inputs are:
 The outputs are:  
   \-  gene distance file  
   \-  distance sequence file, a string  
+  
 ### Hi-C interaction transfer
 'Hi-C_InteractionTransfer.py' could transfer the interaction intervals into gene-gene interactions.  
-*The input is:  
+The input is:  
   \-  Input is the Hi-C interaction file  
   \-  cLD file with Ensembl ID  
   \-  specify the chromosome  
@@ -67,28 +67,52 @@ The output is:
   \-  the gene-gene interactions in terms of Esmbel ID   
   
 ### Run MH test & Fisher's Exact test
-'interactionDistGroup.py' could separate the cLD gene pairs into 13\*2 groups, g
-openfile1 = open(r'/PATH/genedistance.txt','r')  #gene distance file
-openfile2 = open(r'/PATH/namedcld.txt','r')  #namedcld file, the cLD value with gene esembl ID
-openfile3 = open(r'/PATH/Hi-Cgeneint.txt','r') #Gene interaction file, e.g. Hi-Cgeneint.txt
-outfile = '/PATH/interactionDistGroup.txt' #output is the triangule matrix. negtive value means with interaction, positive means no-interaction
+'interactionDistGroup.py' could separate the cLD gene pairs into 13\*2 groups, 13 means 13 distance groups, 2 means with/without interactions.  
+The inputs are:  
+  \-  gene distance file   
+  \-  cLD with gene esembl ID   
+  \-  Gene interaction file, e.g. Hi-Cgeneint.txt   
+The output is:  
+  \-  output is a matrix. negtive value means with interaction, positive means no-interaction   
 
-'interactionDistseparate.py'
-cldfile = open(r'/PATH/namedcld.txt','r')  # the named cld file
-groupfile = open(r'/PATH/interactionDistGroup.txt','r')  #the upper triangule interaction-distance information file.
-i0file = '/PATH/cldi0.txt' # output is the cld without interaction, this file contains 13 lines, each one represent a distance group.
-i1file = '/PATH/cldi1.txt' # output is the cld with interaction, this file contains 13 lines, each one represent a distance group.
-
-'tests.py'
-thres = 0.5 #quantile, threshold of success
-i0file = '/PATH/cldi0.txt' 
-i1file = '/PATH/cldi1.txt'
+'interactionDistseparate.py' and 'tests.py' could run the MH test and Fisher's exact test.  
+The inputs are:    
+  \-  cLD with gene esembl ID    
+  \-  interaction-distance information matrix   
+  \-  threshold of success (in quantile)  
+ 
+The outputs are the cld without interaction, this file contains 13 lines, each one represent a distance group. Base on these outputs, 'tests.py' could provide the test statistics and p-values for the test.  
 
 ### Bootstrap Methods ()
-In the bootstrap parts. 
+'geneRandom.py' is used to sample a subset of genes from the filtered gene file.   
+The inputs are:  
+  \-  Filtered genefile  
+  \-  sample size  
+The output is a gene sample file.   
+
+'ldBootstrap.py' and 'cldBootstrap' are used to run bootstrap algorithm.
+#####For LD bootstrap:
+The inputs are:  
+  \-  gene sample  
+  \-  threshold of rare variant  
+  \-  Sample size of each iteration   
+  \-  epoch  
+The output is the bootstrap result file.  
+#####For cLD bootstrap:
+The inputs are:  
+  \-  gene sample  
+  \-  gene information list, you can find the example in the demo  
+  \-  samplesize  
+  \-  epoch  
+The output is the cLD Bootstap result, each row represents a iteration.
+
+'bootstrapGroups.py' and 'bootstrapResultSeparate.py' are used to separate gene pairs into several cMAF groups. You may read the detail in the Supplementary material.
 
 ### Example Input Data
-
+#### Example gene information file
+Attempt | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 | #9 | #10 | #11
+--- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
+Seconds | 301 | 283 | 290 | 286 | 289 | 285 | 287 | 287 | 272 | 276 | 269
 
 ## Protein Docking (Chapter 4)
 The softwares are  
