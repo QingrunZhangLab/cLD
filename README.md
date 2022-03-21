@@ -46,27 +46,27 @@ cld
 
 
 ## Protein Docking
-The softwares are
-1.	Protein docking software:  HDOCKlite-v1.1: http://huanglab.phys.hust.edu.cn/software/hdocklite/ 
-2.	Visualization software: 
-Pymol 2.5.1: https://pymol.org/2/ 
-LigPlot+’s: https://www.ebi.ac.uk/thornton-srv/software/LigPlus/manual/manual.html
+The softwares are  
+1.	Protein docking software:  HDOCKlite-v1.1: http://huanglab.phys.hust.edu.cn/software/hdocklite/   
+2.	Visualization software:   
+Pymol 2.5.1: https://pymol.org/2/   
+LigPlot+’s: https://www.ebi.ac.uk/thornton-srv/software/LigPlus/manual/manual.html  
 
-### Data source and quality control
-plink="/path_to_plink/plink"
-#Delete individuals with missingness>0.1
-$plink --bfile "$prefix" --mind 0.1 --make-bed --out "$prefix".1
-#Delete snp with missingness>0.1
-$plink --bfile "$prefix".1 --geno 0.1 --make-bed --out "$prefix".2
-#Check the distribution of HWE p-values for all SNPs
-#First, use a stringent HWE threshold for controls
-$plink --bfile "$prefix".2 --hwe 1e-6 --make-bed --out "$pefix".step1
-#Second, use a less stringent threshold for the case
-$plink --bfile "$prefix".step1 --hwe 1e-10 --hwe-all --make-bed --out "$prefix".step2
-#Remove duplicate SNPs
-$plink --noweb --bfile "$prefix".step2 --list-duplicate-vars
-cut -f4 plink.dupvar | cut -f1 -d" " > Duplicates.list
-$plink --noweb --bfile "$prefix".step2 --exclude Duplicates.list --make-bed --out "$prefix".clean
+### Data source and quality control  
+plink="/path_to_plink/plink"  
+#Delete individuals with missingness>0.1  
+$plink --bfile "$prefix" --mind 0.1 --make-bed --out "$prefix".1  
+#Delete snp with missingness>0.1   
+$plink --bfile "$prefix".1 --geno 0.1 --make-bed --out "$prefix".2  
+#Check the distribution of HWE p-values for all SNPs  
+#First, use a stringent HWE threshold for controls  
+$plink --bfile "$prefix".2 --hwe 1e-6 --make-bed --out "$pefix".step1  
+#Second, use a less stringent threshold for the case  
+$plink --bfile "$prefix".step1 --hwe 1e-10 --hwe-all --make-bed --out "$prefix".step2  
+#Remove duplicate SNPs  
+$plink --noweb --bfile "$prefix".step2 --list-duplicate-vars  
+cut -f4 plink.dupvar | cut -f1 -d" " > Duplicates.list  
+$plink --noweb --bfile "$prefix".step2 --exclude Duplicates.list --make-bed --out "$prefix".clean  
 
 ### Go and KEGG pathway analysis
 Using ‘clusterProfiler’ R package, the code is Go and KEGG pathway analysis.R
