@@ -13,7 +13,7 @@ If you want to run a the anaylsis on the Hi-C interactions, you'll need to use H
 
 ## Procedure (Chapter 2 & 3)
 
-### Intergrate SNVs
+### Integrate SNVs
 'geneIntegrate.py' could integrate the SNVs into the gene lines, you can find the detail in the Supplementary material Chapter 1.
 The inputs are:  
   \-  genefile     #  gene information file  
@@ -58,13 +58,32 @@ The outputs are:
   \-  outfile  #  gene distance file
   \-  outfile2   #  distance sequence file, a string
 ### Hi-C interaction transfer
-
-### Separate gene pairs into different groups
+'Hi-C_InteractionTransfer.py' could transfer the interaction intervals into gene-gene interactions.  
+  \-  openfile  #  Input is the Hi-C interaction file  
+  \-  cldfile    #  Named cld file  
+  \-  outfile   #  output is the gene-gene interactions in terms of Esmbel ID   
+  \-  chr = '1'  #  Specify the chromosome  
 
 ### Run MH test & Fisher's Exact test
+'interactionDistGroup'
+openfile1 = open(r'/PATH/genedistance.txt','r')  #gene distance file
+openfile2 = open(r'/PATH/namedcld.txt','r')  #namedcld file, the cLD value with gene esembl ID
+openfile3 = open(r'/PATH/Hi-Cgeneint.txt','r') #Gene interaction file, e.g. Hi-Cgeneint.txt
+outfile = '/PATH/interactionDistGroup.txt' #output is the triangule matrix. negtive value means with interaction, positive means no-interaction
+
+'interactionDistseparate'
+cldfile = open(r'/PATH/namedcld.txt','r')  # the named cld file
+groupfile = open(r'/PATH/interactionDistGroup.txt','r')  #the upper triangule interaction-distance information file.
+i0file = '/PATH/cldi0.txt' # output is the cld without interaction, this file contains 13 lines, each one represent a distance group.
+i1file = '/PATH/cldi1.txt' # output is the cld with interaction, this file contains 13 lines, each one represent a distance group.
+
+'tests'
+thres = 0.5 #quantile, threshold of success
+i0file = '/PATH/cldi0.txt' 
+i1file = '/PATH/cldi1.txt'
 
 ### Bootstrap Methods ()
-
+In the bootstrap parts. 
 
 ### Example Input Data
 
