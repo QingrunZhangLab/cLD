@@ -135,6 +135,7 @@ chr1 | gene | 20 | 29 | Ensemble3
 chr1 | gene | 26 | 101 | Ensemble4
 chr1 | gene | 99 | 150 | Ensemble5
 ... | ... | ... | ... |...
+   
 In the practice, we don't need the headline. 
 #### Example Hi-C interaction file
 Count | interval 1 (chr;lower;upper) | interval 2 (chr;lower;upper)
@@ -143,7 +144,7 @@ C0   |   1;0;10 | 1;19;25
 C1   |   1;25;40 | 1;90;110
 C2   |   1;2;13 | 1;20;24
 ... | ... | ... 
-## Protein Docking (Chapter 4)
+## Protein Docking 
 The softwares are  
 1.	Protein docking software:  HDOCKlite-v1.1: http://huanglab.phys.hust.edu.cn/software/hdocklite/   
 2.	Visualization software:   
