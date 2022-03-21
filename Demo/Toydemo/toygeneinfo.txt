@@ -1,0 +1,5 @@
+chr1  gene  10  20  gene1
+chr1  gene  15  24 gene2
+chr1  gene  20  29  gene3
+chr1  gene  26  101  gene4
+chr1  gene  99  150 gene5
