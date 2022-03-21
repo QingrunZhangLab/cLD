@@ -110,10 +110,15 @@ The output is the cLD Bootstap result, each row represents a iteration.
 
 ### Example Input Data
 #### Example gene information file
-Attempt | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 | #9 | #10 | #11
---- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
-Seconds | 301 | 283 | 290 | 286 | 289 | 285 | 287 | 287 | 272 | 276 | 269
-
+chr1 | gene | 10 | 20 | Ensemble1
+--- | --- | --- | --- |--- 
+chr1 | gene | 15 | 24 | Ensemble1 
+--- | --- | --- | --- |--- 
+chr1 | gene | 20 | 29 | Ensemble1 
+--- | --- | --- | --- |--- 
+chr1 | gene | 26 | 101 | Ensemble1
+--- | --- | --- | --- |--- 
+chr1 | gene | 99 | 150 | Ensemble1 
 ## Protein Docking (Chapter 4)
 The softwares are  
 1.	Protein docking software:  HDOCKlite-v1.1: http://huanglab.phys.hust.edu.cn/software/hdocklite/   
