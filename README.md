@@ -14,7 +14,7 @@ If you want to run a the anaylsis on the Hi-C interactions, you'll need to use H
 ## Procedure (Chapter 2 & 3)
 
 ### Integrate SNVs
-'geneIntegrate.py' could integrate the SNVs into the gene lines, you can find the detail in the Supplementary material Chapter 1.
+**'geneIntegrate.py'** could integrate the SNVs into the gene lines, you can find the detail in the Supplementary material Chapter 1.
 The inputs are:  
   \-  gene information file  
   \-  original genotype data, contains the SNV information  
@@ -23,20 +23,20 @@ The inputs are:
 The output is:  
 \-  the intergrated gene file  
 
-'geneFilter.py' could remove the genes with cMAF = 0.
+**'geneFilter.py'** could remove the genes with cMAF = 0.
 The input is:  
   \-  the integrated gene file  
 The output is:  
   \-  the filtered gene file
   
 ### Calculate cLD
-'cld.py' could calculate the cLD matrix given the filtered gene file.
+**'cld.py'** could calculate the cLD matrix given the filtered gene file.
 The input is:   
   \-  the filtered gene data from filter  
 The output is:   
   \-  the cLD file without Ensemble ID  
     
-'namedcld.py' could add gene names to the cLD result.  
+**'namedcld.py'** could add gene names to the cLD result.  
 The input is:   
   \-  cLD file from cLD.py  
   \-  gene information list, you can find the example in the demo  
@@ -44,13 +44,13 @@ The output is:
   \-  output is the cLD file with Gene Esmbel ID  
 
 ### Gene distance
-'genemid.py' and 'genedistance.py' are used to calculate the gene distcance between gene pairs.
-In genemid.py, the input is:  
+**'genemid.py'** and **'genedistance.py'** are used to calculate the gene distcance between gene pairs.
+In **'genemid.py'**, the input is:  
   \-  cLD file with Ensembl ID  
 The output is:  
   \-  gene mid point list  
 
-In genedistance.py, the inputs are:  
+In **'genedistance.py'**, the inputs are:  
   \-  cLD file with Ensembl ID   
   \-  gene mid point file  
 The outputs are:  
@@ -58,7 +58,7 @@ The outputs are:
   \-  distance sequence file, a string  
   
 ### Hi-C interaction transfer
-'Hi-C_InteractionTransfer.py' could transfer the interaction intervals into gene-gene interactions.  
+**'Hi-C_InteractionTransfer.py'** could transfer the interaction intervals into gene-gene interactions.  
 The input is:  
   \-  Hi-C interaction file  
   \-  cLD file with Ensembl ID  
@@ -67,10 +67,10 @@ The output is:
   \-  the gene-gene interactions in terms of Esmbel ID   
   
 ### Variance Comparison
-'cldVar.py' calculate the variance of cLD based on the filtered gene file.
+**'cldVar.py'** calculate the variance of cLD based on the filtered gene file.
 The input is:    
   \-  filtered gene file from filter  
-'ldVar.py' estimate the variance of LD based of the original SNV file. 
+**'ldVar.py'** estimate the variance of LD based of the original SNV file. 
 The inputs are: 
   \-  SNP file  
   \-  specify the chromosome  
@@ -79,7 +79,7 @@ The inputs are:
 The output of these two python files are the estimated variance. 
  
 ### Run MH test & Fisher's Exact test
-'interactionDistGroup.py' could separate the cLD gene pairs into 13\*2 groups, 13 means 13 distance groups, 2 means with/without interactions.  
+**'interactionDistGroup.py'** could separate the cLD gene pairs into 13\*2 groups, 13 means 13 distance groups, 2 means with/without interactions.  
 The inputs are:  
   \-  gene distance file   
   \-  cLD with gene esembl ID   
@@ -87,7 +87,7 @@ The inputs are:
 The output is:  
   \-  output is a matrix. negtive value means with interaction, positive means no-interaction   
 
-'interactionDistseparate.py' and 'tests.py' could run the MH test and Fisher's exact test.  
+**'interactionDistseparate.py'** and **'tests.py'** could run the MH test and Fisher's exact test.  
 The inputs are:    
   \-  cLD with gene esembl ID    
   \-  interaction-distance information matrix   
