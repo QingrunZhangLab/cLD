@@ -96,13 +96,13 @@ The inputs are:
 The outputs are the cld without interaction, this file contains 13 lines, each one represent a distance group. Base on these outputs, 'tests.py' could provide the test statistics and p-values for the test.  
 
 ### Bootstrap Methods (Chapter 3)
-'geneRandom.py' is used to sample a subset of genes from the filtered gene file.   
+**'geneRandom.py'** is used to sample a subset of genes from the filtered gene file.   
 The inputs are:  
   \-  Filtered genefile  
   \-  sample size  
 The output is a gene sample file.   
 
-'ldBootstrap.py' and 'cldBootstrap' are used to run bootstrap algorithm.
+**'ldBootstrap.py'** and **'cldBootstrap'** are used to run bootstrap algorithm.
 #####For LD bootstrap:
 The inputs are:  
   \-  gene sample  
@@ -118,7 +118,7 @@ The inputs are:
   \-  epoch  
 The output is the cLD Bootstap result, each row represents a iteration.
 
-'bootstrapGroups.py' and 'bootstrapResultSeparate.py' are used to separate gene pairs into several cMAF groups. You may read the detail in the Supplementary material.
+**'bootstrapGroups.py'** and **'bootstrapResultSeparate.py'** are used to separate gene pairs into several cMAF groups. You may read the detail in the Supplementary material.
 
 ### Example Input Data
 #### Example SNV file
