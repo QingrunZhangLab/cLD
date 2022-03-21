@@ -60,12 +60,24 @@ The outputs are:
 ### Hi-C interaction transfer
 'Hi-C_InteractionTransfer.py' could transfer the interaction intervals into gene-gene interactions.  
 The input is:  
-  \-  Input is the Hi-C interaction file  
+  \-  Hi-C interaction file  
   \-  cLD file with Ensembl ID  
   \-  specify the chromosome  
 The output is:  
   \-  the gene-gene interactions in terms of Esmbel ID   
   
+### Variance Comparison
+'cldVar.py' calculate the variance of cLD based on the filtered gene file.
+The input is:    
+  \-  filtered gene file from filter  
+'ldVar.py' estimate the variance of LD based of the original SNV file. 
+The inputs are: 
+  \-  SNP file  
+  \-  specify the chromosome  
+  \-  threshold of rare variant  
+  \-  sample size  
+The output of these two python files are the estimated variance. 
+ 
 ### Run MH test & Fisher's Exact test
 'interactionDistGroup.py' could separate the cLD gene pairs into 13\*2 groups, 13 means 13 distance groups, 2 means with/without interactions.  
 The inputs are:  
@@ -83,7 +95,7 @@ The inputs are:
  
 The outputs are the cld without interaction, this file contains 13 lines, each one represent a distance group. Base on these outputs, 'tests.py' could provide the test statistics and p-values for the test.  
 
-### Bootstrap Methods ()
+### Bootstrap Methods (Chapter 3)
 'geneRandom.py' is used to sample a subset of genes from the filtered gene file.   
 The inputs are:  
   \-  Filtered genefile  
@@ -109,16 +121,28 @@ The output is the cLD Bootstap result, each row represents a iteration.
 'bootstrapGroups.py' and 'bootstrapResultSeparate.py' are used to separate gene pairs into several cMAF groups. You may read the detail in the Supplementary material.
 
 ### Example Input Data
-#### Example gene information file
+#### Example SNV file
+#CHROM  |  POS  |  ID  |  REF  |  ALT  |  QUAL  |  FILTER  |  INFO  |  FORMAT  | HG00096 |   HG00097  |  HG00099  |  HG00100  |  HG00101  |  HG00102 
+--- | --- | --- | --- |--- | --- | --- | --- | --- |--- | --- |--- |--- | --- |--- 
+1  |  22  |  rs367896724  |  A  |  AC  |  100   | PASS  |  AC=2130;AF=0.425319;AN=5008;NS=2504;DP=103152;EAS_AF=0.3363;AMR_AF=0.3602;AFR_AF=0.4909;EUR_AF=0.4056;SAS_AF=0.4949;AA=\|\|\|unknown(NO_COVERAGE);VT=INDEL  |  GT |  1\|0  |  0\|1 |   0\|1  |  1\|0  |  0\|0  |  1\|0 |
+... | ... | ... | ... |... | ... | ... | ... | ... |... | ... |... |... | ... |... 
+#### Example gene information file  
+CHR | genename | Startpoint | Endpoint | Ensemble ID
+--- | --- | --- | --- |--- 
 chr1 | gene | 10 | 20 | Ensemble1
---- | --- | --- | --- |--- 
-chr1 | gene | 15 | 24 | Ensemble1 
---- | --- | --- | --- |--- 
-chr1 | gene | 20 | 29 | Ensemble1 
---- | --- | --- | --- |--- 
-chr1 | gene | 26 | 101 | Ensemble1
---- | --- | --- | --- |--- 
-chr1 | gene | 99 | 150 | Ensemble1 
+chr1 | gene | 15 | 24 | Ensemble2  
+chr1 | gene | 20 | 29 | Ensemble3
+chr1 | gene | 26 | 101 | Ensemble4
+chr1 | gene | 99 | 150 | Ensemble5
+... | ... | ... | ... |...
+In the practice, we don't need the headline. 
+#### Example Hi-C interaction file
+Count | interval 1 (chr;lower;upper) | interval 2 (chr;lower;upper)
+--- | --- | --- 
+C0   |   1;0;10 | 1;19;25
+C1   |   1;25;40 | 1;90;110
+C2   |   1;2;13 | 1;20;24
+... | ... | ... 
 ## Protein Docking (Chapter 4)
 The softwares are  
 1.	Protein docking software:  HDOCKlite-v1.1: http://huanglab.phys.hust.edu.cn/software/hdocklite/   
