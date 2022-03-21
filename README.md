@@ -151,7 +151,7 @@ Pymol 2.5.1: https://pymol.org/2/
 LigPlot+’s: https://www.ebi.ac.uk/thornton-srv/software/LigPlus/manual/manual.html  
 
 ### Data source and quality control  
-plink="/path_to_plink/plink".
+We use the software plink: plink="/path_to_plink/plink". The code is 'Data source and quality control.sh'
 
 ### Go and KEGG pathway analysis
 Using ‘clusterProfiler’ R package, the code is 'Go and KEGG pathway analysis.R'
