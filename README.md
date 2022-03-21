@@ -61,15 +61,6 @@ The outputs are:
   \-  gene distance file  
   \-  distance sequence file, a string  
   
-### Hi-C interaction transfer
-**'Hi-C_InteractionTransfer.py'** could transfer the interaction intervals into gene-gene interactions.  
-The input is:  
-  \-  Hi-C interaction file  
-  \-  cLD file with Ensembl ID  
-  \-  specify the chromosome  
-The output is:  
-  \-  the gene-gene interactions in terms of Esmbel ID   
-  
 ### Variance Comparison
 **'cldVar.py'** calculate the variance of cLD based on the filtered gene file.
 The input is:    
@@ -80,26 +71,10 @@ The inputs are:
   \-  specify the chromosome  
   \-  threshold of rare variant  
   \-  sample size  
-The output of these two python files are the estimated variance. 
+The output of these two python files are the estimated variance.  
  
-### Run MH test & Fisher's Exact test
-**'interactionDistGroup.py'** could separate the cLD gene pairs into 13\*2 groups, 13 means 13 distance groups, 2 means with/without interactions.  
-The inputs are:  
-  \-  gene distance file   
-  \-  cLD with gene esembl ID   
-  \-  Gene interaction file, e.g. Hi-Cgeneint.txt   
-The output is:  
-  \-  output is a matrix. negtive value means with interaction, positive means no-interaction   
-
-**'interactionDistseparate.py'** and **'tests.py'** could run the MH test and the Fisher's exact test.  
-The inputs are:    
-  \-  cLD with gene esembl ID    
-  \-  interaction-distance information matrix   
-  \-  threshold of success (in quantile)  
  
-The outputs are the cld without interaction, this file contains 13 lines, each one represent a distance group. Based on these outputs, 'tests.py' could provide the test statistics and p-values for the test.  
-
-### Bootstrap Methods (Applying cLD to real sequence data)
+### Bootstrap Methods
 **'geneRandom.py'** is used to sample a subset of genes from the filtered gene file.   
 The inputs are:  
   \-  Filtered genefile  
@@ -123,6 +98,34 @@ The inputs are:
 The output is the cLD Bootstrap result, each row represents an iteration.
 
 **'bootstrapGroups.py'** and **'bootstrapResultSeparate.py'** are used to separate gene pairs into several cMAF groups. You may read the detail in the Supplementary material.
+ 
+### Hi-C interaction transfer
+**'Hi-C_InteractionTransfer.py'** could transfer the interaction intervals into gene-gene interactions.  
+The input is:  
+  \-  Hi-C interaction file  
+  \-  cLD file with Ensembl ID  
+  \-  specify the chromosome  
+The output is:  
+  \-  the gene-gene interactions in terms of Esmbel ID   
+  
+## Applying cLD to real sequence data
+
+### Run MH test & Fisher's Exact test
+**'interactionDistGroup.py'** could separate the cLD gene pairs into 13\*2 groups, 13 means 13 distance groups, 2 means with/without interactions.  
+The inputs are:  
+  \-  gene distance file   
+  \-  cLD with gene esembl ID   
+  \-  Gene interaction file, e.g. Hi-Cgeneint.txt   
+The output is:  
+  \-  output is a matrix. negtive value means with interaction, positive means no-interaction   
+
+**'interactionDistseparate.py'** and **'tests.py'** could run the MH test and the Fisher's exact test.  
+The inputs are:    
+  \-  cLD with gene esembl ID    
+  \-  interaction-distance information matrix   
+  \-  threshold of success (in quantile)  
+ 
+The outputs are the cld without interaction, this file contains 13 lines, each one represent a distance group. Based on these outputs, 'tests.py' could provide the test statistics and p-values for the test.  
 
 ### Example Input Data
 #### Example SNV file
