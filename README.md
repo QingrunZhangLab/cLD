@@ -82,14 +82,14 @@ The inputs are:
 The output is a gene sample file.   
 
 **'ldBootstrap.py'** and **'cldBootstrap'** are used to run bootstrap algorithm.
-#####For LD bootstrap:
+##### For LD bootstrap:
 The inputs are:  
   \-  gene sample  
   \-  threshold of rare variant  
   \-  Sample size of each iteration   
   \-  epoch  
 The output is the bootstrap result file.  
-#####For cLD bootstrap:
+##### For cLD bootstrap:
 The inputs are:  
   \-  gene sample  
   \-  gene information list, you can find the example in the demo  
