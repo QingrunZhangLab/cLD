@@ -192,10 +192,10 @@ The output is:
 We use the software plink: plink="/path_to_plink/plink". The code is 'Data source and quality control.sh'
 
 ### Go and KEGG pathway analysis
-Using ‘clusterProfiler’ R package, the code is 'Go and KEGG pathway **'analysis.R'**
+Using ‘clusterProfiler’ R package, the code is **'Go and KEGG pathway analysis.R'**
 
 ### Calculating cLD for each gene pair in case-control datasets  
-First, we calculated the cMAF within each gene region for case and control separately (using **WriteInputcLD.py**); We then retained genes with cMAF>0.05 in both case and control groups, and then iteratively calculated cLD within the gene regions for each gene pair for case and control separately (using CalcLD.py).  The codes see attached files. 
+First, we calculated the cMAF within each gene region for case and control separately (using **WriteInputcLD.py**); We then retained genes with cMAF>0.05 in both case and control groups, and then iteratively calculated cLD within the gene regions for each gene pair for case and control separately (using **CalcLD.py**).
 
 
 
