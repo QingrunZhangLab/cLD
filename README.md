@@ -175,12 +175,6 @@ Pymol 2.5.1: https://pymol.org/2/
 LigPlot+’s: https://www.ebi.ac.uk/thornton-srv/software/LigPlus/manual/manual.html  
 
 
-### Data source and quality control  
-We use the software plink: plink="/path_to_plink/plink". The code is 'Data source and quality control.sh'
-
-### Go and KEGG pathway analysis
-Using ‘clusterProfiler’ R package, the code is 'Go and KEGG pathway **'analysis.R'**
-
 ### Find High cLD with no interactions reported
 **'HighcldInteractionFilter.py'** is to find the gene pairs with large cLD but no interaction reported in the given databases.
 The inputs are:  
@@ -192,4 +186,18 @@ The inputs are:
 The output is:  
   \-  High cld gene pairs with no-interactions, could have other results if you change the codes.
   
+## Association mapping using cLD and annotations
+
+### Data source and quality control  
+We use the software plink: plink="/path_to_plink/plink". The code is 'Data source and quality control.sh'
+
+### Go and KEGG pathway analysis
+Using ‘clusterProfiler’ R package, the code is 'Go and KEGG pathway **'analysis.R'**
+
+### Calculating cLD for each gene pair in case-control datasets  
+First, we calculated the cMAF within each gene region for case and control separately (using **WriteInputcLD.py**); We then retained genes with cMAF>0.05 in both case and control groups, and then iteratively calculated cLD within the gene regions for each gene pair for case and control separately (using CalcLD.py).  The codes see attached files. 
+
+
+
+
 
