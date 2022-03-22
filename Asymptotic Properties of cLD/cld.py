@@ -1,6 +1,6 @@
 import pandas as pd
 
-This code is to calculate the cLD from the filtered gene file.
+#This code is to calculate the cLD from the filtered gene file.
 
 openfile = open(r'/PATH/filteredgene.csv','r')  #the filtered gene data from filter.
 outfile = '/PATH/cld.txt'  #output is the cLD file without Esemble ID
