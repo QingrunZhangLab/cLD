@@ -15,7 +15,7 @@ In this analysis, you need to provide:
 In the paper, we are using the 1000 Genome dataset as the genotype file. The gene information file should contain the start point, end point and gene's Ensembl ID. The gene-gene interaction file should contain the gene-gene interaction in terms of genes' Ensembl ID. The example data is given.
 If you want to run a anaylsis on the Hi-C interactions, you'll need to use Hi-C_InteractionTransfer.py to transfer the interaction intervals into gene-gene interactions. 
 
-## Asymptotic Properties of cLD & Applying cLD to real sequence data
+## Asymptotic Properties of cLD 
 
 ### Integrate SNVs
 **'geneIntegrate.py'** could integrate the SNVs into the gene lines, you can find the detail in the Supplementary material Chapter 1.
