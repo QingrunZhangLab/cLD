@@ -128,6 +128,16 @@ The inputs are:
  
 The outputs are the cld without interaction, this file contains 13 lines, each one represent a distance group. Based on these outputs, 'tests.py' could provide the test statistics and p-values for the test.  
 
+### Sample LD value from the genotype file
+The folder called LDSampling contains the Java code to sample SNPs according to a fixed distance. The steps are:  
+1. we filtered and separated the VCFs by populations  
+
+2. Using the gene list to calculate their LD  
+
+3. Generating 1000 null regions per gene. We use each gene block's distance and size to generate the null regions  
+
+Also, a recheck is done to ensure all null distribution blocks have SNPs, if they do not these regions alone are regenerated.
+
 ### Example Input Data
 #### Example SNV file
 #CHROM  |  POS  |  ID  |  REF  |  ALT  |  QUAL  |  FILTER  |  INFO  |  FORMAT  | HG00096 |   HG00097  |  HG00099  |  HG00100  |  HG00101  |  HG00102 
@@ -182,5 +192,4 @@ The inputs are:
 The output is:  
   \-  High cld gene pairs with no-interactions, could have other results if you change the codes.
   
-
 
