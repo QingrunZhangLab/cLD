@@ -108,6 +108,7 @@ The input is:
 The output is:  
   \-  the gene-gene interactions in terms of Esmbel ID   
   
+  
 ## Applying cLD to real sequence data
 
 ### Run MH test & Fisher's Exact test
@@ -163,9 +164,23 @@ The software are
 Pymol 2.5.1: https://pymol.org/2/   
 LigPlot+’s: https://www.ebi.ac.uk/thornton-srv/software/LigPlus/manual/manual.html  
 
+
 ### Data source and quality control  
 We use the software plink: plink="/path_to_plink/plink". The code is 'Data source and quality control.sh'
 
 ### Go and KEGG pathway analysis
 Using ‘clusterProfiler’ R package, the code is 'Go and KEGG pathway **'analysis.R'**
+
+### Find High cLD with no interactions reported
+**'HighcldInteractionFilter.py'** is to find the gene pairs with large cLD but no interaction reported in the given databases.
+The inputs are:  
+  \-  thres of cld   # Define the high cLD  
+  \-  thres of cMAF  # uesd to filter the gene pairs with a condition on the cMAF  
+  \-  interaction file  # The combination of existing interaction databases  
+  \-  cLD with Ensembl ID   
+  \-  MAF of genes   
+The output is:  
+  \-  High cld gene pairs with no-interactions, could have other results if you change the codes.
+  
+
 
